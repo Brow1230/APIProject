@@ -60,14 +60,14 @@ function startSearch(){
 
 }
 function getSearchResults(){
-let url = '${movieDataBaseURL}search/movie?api_key{APIKEY}&query=${searchString.valie}';
+let url = `${movieDataBaseURL}search/movie?
+api_key=${APIKEY}&query=${searchString.value}`;
 
 fetch(url)
     .then(response => response.json())
-    .then(data=>{
+    .then(function (data){
         console.log(data);
-
     })
-    .catch(error => alert(error))
+    .catch(error => console.log(error))
 
 }
