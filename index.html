@@ -9,12 +9,14 @@
 <body>
     <main>
         <header >
-            <img id="back-button" alt="Back Button" title="Back"/>
+            <h1 class="a"> Find-a-Film </h1>
+            <div class="hidden">
+                <img id="back-button" alt="Back Button" title="Back" data-src="img/carriage-return.svg" class="iconic">
+            </div>
             <div class="searchButtonDiv">
-            <img id="search-button" alt="Search" title="Search" data-src="img/magnifying-glass.svg" class="iconic iconic-md"/>
+                <img id="search-button" alt="Search" title="Search" data-src="img/magnifying-glass.svg" class="iconic iconic-md"/>
             </div>
             <input type="text" id="search-input" placeholder="search" />
-            
         </header>
         
         <div class="page" id="search-results">
@@ -26,12 +28,10 @@
             <section class="title"></section>
             <section class="content"></section>
         </div>
+        <footer class="atr">
+            <img src="img/408x161-powered-by-rectangle-green.png" alt="Powered By the Movie Database" />            
+        </footer>
     </main>
- 
-    
-    <div class="attribution">
-       <img src="img/408x161-powered-by-rectangle-green.png" alt="Powered By the Movie Database">
-    </div>
     
     <script src="js/iconic.min.js"></script>
     <script src="js/key.js"></script>

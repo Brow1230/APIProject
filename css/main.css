@@ -9,11 +9,17 @@
     fill: #345;
     stroke: #269
 }
+#back-button{
+    position:fixed;
+    top:0; left:1rem;
+    cursor: pointer;
+    width: 10vw;
+}
 .active{
     display: block;
 }
 .hidden{
-    display: none;
+    visibility: hidden;
 }
 *{
     padding: 0;
@@ -32,10 +38,33 @@ html{
 header{
     padding:1rem 2rem;
     color: black;
+
+}
+.a{
+    border:3px solid #55ffb6;
+    font-size: 2.827rem;
+    border-radius: 50px 300px;
+    text-align: center;
 }
 main{
+    display: flex;
+    flex-direction: column;
     padding:1rem 2rem;
 }
 footer{
+    display:grid;
     padding:1rem 2rem;
+    background-color: #081c24;
+    color: #fff;
+    grid-gap: 1rem;
+}
+footer p{
+    margin: 0 auto;
+    font-size: 0.5rem ;
+}
+.atr img{
+    margin: auto;
+    width: 35vw;
+    align-items: center;
+
 }
