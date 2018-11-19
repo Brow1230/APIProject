@@ -3,6 +3,7 @@ let imageURL = null;
 let imageSizes = [];
 
 let searchString ="";
+let pages = [];
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -14,7 +15,8 @@ function init() {
 function addEventListener() {
     let searchButton = document.querySelector(".searchButtonDiv");
   searchButton.addEventListener("click", startSearch);
-
+    pages = document.querySelectorAll(".page")
+    console.log(pages);
 
 }
 function getLocalStorageData(){

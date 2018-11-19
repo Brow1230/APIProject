@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700|Noto+Sans+TC');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+/* -- Buttons Styles -- */
 #search-button{
     height: 3rem;
     width: 3rem;
@@ -15,30 +27,26 @@
     cursor: pointer;
     width: 10vw;
 }
+#settings{
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+/* -- Page Controls -- */
 .active{
     display: block;
 }
 .hidden{
     visibility: hidden;
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-*::after,
-*::before{
-    box-sizing: inherit;
-}
+/* --- Deafults --- */
 html{
+    
     font-size: 16px;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.5;
 }
-header{
-    padding:1rem 2rem;
-    color: black;
 
+h1,h2,h3{
+    font-family: 'Merriweather', 'Times New Roman', Times, serif;
 }
 .a{
     border:3px solid #55ffb6;
@@ -46,9 +54,19 @@ header{
     border-radius: 50px 300px;
     text-align: center;
 }
-main{
+header{
+    padding:1rem 2rem;
+    color: black;
     display: flex;
     flex-direction: column;
+    order: 2 , 1;
+}
+body{
+    font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
+
+}
+main{
+    
     padding:1rem 2rem;
 }
 footer{
@@ -67,4 +85,8 @@ footer p{
     width: 35vw;
     align-items: center;
 
+}
+.searchTerms{
+    /*filler */
+    display:block;
 }
