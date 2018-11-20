@@ -1,23 +1,32 @@
+// CONST & VARS
 const movieDataBaseURL = "https://api.themoviedb.org/3/";
 let imageURL = null;
 let imageSizes = [];
 
 let searchString ="";
 let pages = [];
-
+//
 document.addEventListener("DOMContentLoaded", init);
-
+//
 function init() {
     addEventListener();
-    console.log(APIKEY);
 }
 
 function addEventListener() {
+    //SEARCH BUTTON
     let searchButton = document.querySelector(".searchButtonDiv");
   searchButton.addEventListener("click", startSearch);
-    pages = document.querySelectorAll(".page")
-    console.log(pages);
-
+    //OPTIONS BUTTON
+    let optionsButton = document.querySelector(".options");
+    optionsButton.addEventListener("click", options);
+    //BACK BUTTON
+    let backButton = document.querySelector(".backButtonDiv");
+    backButton.addEventListener("click", back);
+    //PAGES
+    pages = document.querySelectorAll(".page");
+    console.log(pages,optionsButton,searchButton);
+    //enter to submit?
+    //NOPE.
 }
 function getLocalStorageData(){
     //load image sizes and base url from local storage
@@ -49,7 +58,16 @@ function getPosterSizesandURL(){
         alert("check the console. its broken.");
     })
 }
+//Button functions
+//options / settings button
+function options(){
 
+}
+//Back Button
+function back(){
+
+}
+//search button
 function startSearch(){
     console.log('start search');
     searchString = document.getElementById("search-input").value;
@@ -62,14 +80,61 @@ function startSearch(){
 
 }
 function getSearchResults(){
-let url = `${movieDataBaseURL}search/movie?
-api_key=${APIKEY}&query=${searchString.value}`;
-
+let url = `${movieDataBaseURL}search/movie?api_key=${APIKEY}&query=${searchString}`;
 fetch(url)
-    .then(response => response.json())
-    .then(function (data){
-        console.log(data);
+    .then(function(response){
+        console.log(response);
+        return response.json();
     })
-    .catch(error => console.log(error))
+    .then (function(jsonData){
+        
+        console.log(jsonData);
+        showResponseData();
+    })
+    .catch(function (error){
+        alert("error" + error.message)
+    })
+// fetch(url)
+//     .then(response => response.json())
+//     .then(function (data){
+//         console.log(data);
+//     })
+//     .catch(error => console.log(error))
+
+}
+// function showResponseData(){
+//     let searchResults = document.querySelector(".search-results>.content");
+//     let cards = []
+// }    
+function cardBuilder(){
+    //make everything
+    let df = new DocumentFragment();
+    let movieCard = document.createElement("div");
+    let section = document.createAttribute("section");
+    let image = document.createAttribute("img");
+    let vidTitle = document.createAttribute("p");
+    let vidDate = document.createAttribute("p");
+    let vidRate = document.createAttribute("p");
+    let vidDisc =document.createAttribute("p");
+    //giving it class names
+    movieCard.className("card");
+    section.className("imgSection");
+    vidTitle.className("movieTitle");
+    vidDisc.className("description");
+    vidDate.className("description");
+    //Woah there, you still append the sh!t 
+
+    //fill er up, the df that is.
+    section.appendChild(image);
+    movieCard.appendChild(section);
+    movieCard.appendChild(vidTitle);
+    movieCard.appendChild(vidDate);
+    movieCard.appendChild(vidDisc);
+    movieCard.appendChild(vidRate);
+
+    df.appendChild(movieCard);
+
+    console.log(df)
+    return df;
 
 }

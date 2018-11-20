@@ -90,3 +90,18 @@ footer p{
     /*filler */
     display:block;
 }
+
+/* temp styling for response */
+.card{
+    border: 1px solid black;
+}
+.movieTitle{
+    font-size:2rem;
+    background-color: antiquewhite;
+    color: #081c24;
+}
+.description{
+    font-size:1rem;
+    background-color: lightgray;
+    color: #081c24
+}
