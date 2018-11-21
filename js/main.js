@@ -87,13 +87,15 @@ fetch(url)
         return response.json();
     })
     .then (function(jsonData){
-        
+
         console.log(jsonData);
         showResponseData();
     })
     .catch(function (error){
-        alert("error" + error.message)
+        console.log("error" + error.message);
     })
+
+    
 // fetch(url)
 //     .then(response => response.json())
 //     .then(function (data){
@@ -102,20 +104,24 @@ fetch(url)
 //     .catch(error => console.log(error))
 
 }
-// function showResponseData(){
-//     let searchResults = document.querySelector(".search-results>.content");
-//     let cards = []
-// }    
+function showResponseData(jsonData){
+    let searchResults = document.querySelector(".search-results>.content");
+    let cards = []
+    jsonData.forEach(cardBuilder(item);
+        //FU. you get the best of me tonght
+        //till tomorrow API.
+        
+}    
 function cardBuilder(){
     //make everything
     let df = new DocumentFragment();
     let movieCard = document.createElement("div");
-    let section = document.createAttribute("section");
-    let image = document.createAttribute("img");
-    let vidTitle = document.createAttribute("p");
-    let vidDate = document.createAttribute("p");
-    let vidRate = document.createAttribute("p");
-    let vidDisc =document.createAttribute("p");
+    let section = document.createElement("section");
+    let image = document.createElement("img");
+    let vidTitle = document.createElement("p");
+    let vidDate = document.createElement("p");
+    let vidRate = document.createElement("p");
+    let vidDisc =document.createElement("p");
     //giving it class names
     movieCard.className("card");
     section.className("imgSection");
@@ -123,7 +129,10 @@ function cardBuilder(){
     vidDisc.className("description");
     vidDate.className("description");
     //Woah there, you still append the sh!t 
-
+    vidTitle.textContent = response.title;
+    vidDate.textContent = results.release_date;
+    vidDisc.textContet = results.overview;
+    
     //fill er up, the df that is.
     section.appendChild(image);
     movieCard.appendChild(section);
