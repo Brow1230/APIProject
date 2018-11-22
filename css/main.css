@@ -38,9 +38,9 @@
 .hidden{
     visibility: hidden;
 }
-/* --- Deafults --- */
+/* --- Deafults Mobile First --- */
 html{
-    
+    max-width: 500px;
     font-size: 16px;
     line-height: 1.5;
 }
@@ -48,47 +48,64 @@ html{
 h1,h2,h3{
     font-family: 'Merriweather', 'Times New Roman', Times, serif;
 }
-.a{
-    border:3px solid #55ffb6;
-    font-size: 2.827rem;
-    border-radius: 50px 300px;
-    text-align: center;
-}
 header{
-    padding:1rem 2rem;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    order: 2 , 1;
+    padding: 2rem 3rem;
+    color: white;
+    text-shadow: black;
 }
 body{
     font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
-
 }
 main{
-    
-    padding:1rem 2rem;
+    padding:2rem, 3rem;
+    background-color: #081c24;
 }
 footer{
-    display:grid;
     padding:1rem 2rem;
     background-color: #081c24;
-    color: #fff;
-    grid-gap: 1rem;
 }
-footer p{
-    margin: 0 auto;
-    font-size: 0.5rem ;
+/* --- home page --- */
+a{
+    text-decoration:none!important;
+    color:white!important;
 }
-.atr img{
+.siteName{
+    border:3px solid #55ffb6;
+    font-size: 2.827rem;
+    border-radius: 50px;
+    text-align: center;
+}
+input{
+    width:66%;
+    text-align: center;
+    display: block;
     margin: auto;
-    width: 35vw;
-    align-items: center;
-
+    float:right;
+}
+.searchButtonDiv{
+    float:right;
+    padding-left:1rem;
 }
 .searchTerms{
-    /*filler */
+    
+}
+.atr img{ 
     display:block;
+    margin:auto;
+    width: 35vw;
+    max-width:200px;
+}
+
+.options{
+    /* position: absolute;
+    top: 3.3rem; right:3.8rem; */
+    display:block;
+    padding-right: 1rem;
+    float:right;
+  
+}
+.option img{
+    
 }
 
 /* temp styling for response */
@@ -104,4 +121,14 @@ footer p{
     font-size:1rem;
     background-color: lightgray;
     color: #081c24
+}
+/* modal window */
+.overlay{
+    opacity:0.8;
+    background-color:black;
+}
+.modalWindow{
+    border:10px solid burlywood;
+    background-color: bisque;
+    color:darkslategrey;
 }

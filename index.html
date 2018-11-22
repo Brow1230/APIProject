@@ -9,8 +9,9 @@
 <body>
     <main>
         <header >
-            <h1 class="a"> Find-a-Film </h1>
-            <p>hfjksd</br></br></p>
+            <a href="">
+                <h1 class="siteName"> Find-a-Film </h1>
+            </a>
             <div class="backButtonDiv hidden">
                 <img id="back-button" alt="Back Button" title="Back" data-src="img/carriage-return.svg" class="iconic">
             </div>
@@ -18,12 +19,14 @@
                 <div class="searchButtonDiv">
                     <img id="search-button" alt="Search" title="Search" data-src="img/magnifying-glass.svg" class="iconic iconic-md"/>
                 </div>
-                <input type="text" id="search-input" placeholder="search" />
+                <input type="text" id="search-input" placeholder="Type your search..." />
                 <div class="options">
                         <img id="settings" alt="Search Options" title="Options" src="img/settings-md.svg" class ="" >
                 </div>
             </section>
-            
+            <!-- <div class="options">
+                <img id="settings" alt="Search Options" title="Options" src="img/settings-md.svg" class ="" >
+            </div> -->
         </header>
         
         <div class="page" id="search-results">
@@ -36,8 +39,25 @@
             <section class="title"></section>
             <section class="content"></section>
         </div>
+
+        <div class="modalWindow hidden" id="modalWindow">
+            <section class="title">
+                <h1>OPTIONS</h1>
+            </section>
+            <section class="content">
+                <form action="">
+                <input type="radio" value="Movies">
+                <p>Movies</p>
+                <input type="radio" value="Tv">
+                <p>Tv Shows</p>
+            </form>
+                    </section>
+
+        </div>
         <footer class="atr">
-            <img src="img/408x161-powered-by-rectangle-green.png" alt="Powered By the Movie Database" />            
+            <a href="https://www.themoviedb.org/" target="_blank">
+                <img src="img/408x161-powered-by-rectangle-green.png" alt="Powered By the Movie Database" />            
+            </a>
         </footer>
     </main>
     
