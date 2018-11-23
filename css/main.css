@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700|Noto+Sans+TC');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+/************************/
+/* -- Buttons Styles -- */
+/************************/
+#search-button{
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+}
+
+.iconic-property-stroke,
+.iconic-property-fill {
+    fill: #345;
+    stroke: #269
+}
+#back-button{
+    position:fixed;
+    top:0; left:1rem;
+    cursor: pointer;
+    width: 8vw;
+}
+#settings{
+    height:3rem;
+    width: 3rem;
+    cursor: pointer;
+    transform: rotate(90deg);
+
+}
+
+/***********************/
+/* -- Page Controls -- */
+/***********************/
+.active{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+/*********************************/
+/* --- Deafults Mobile First --- */
+/*********************************/
+
+html{    
+    margin:auto;
+    width:500px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1,h2,h3{
+    font-family: 'Merriweather', 'Times New Roman', Times, serif;
+}
+header{
+    padding: 2rem 3rem;
+    color: white;
+    text-shadow: black;
+}
+body{
+    background-color: #081c24;
+    font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
+}
+main{
+    padding:2rem, 3rem;
+}
+footer{
+    padding:1rem 2rem;
+}
+/*****************/
+/* --- TITLE --- */
+/*****************/
+
+a{
+    text-decoration:none!important;
+    color:white!important;
+}
+.siteName{
+    border:3px solid #55ffb6;
+    font-size: 2.827rem;
+    border-radius: 50px;
+    text-align: center;
+}
+/************************/
+/* --- Search Field --- */
+/************************/
+
+#search-input{
+    text-align: center;
+    margin: auto;
+}
+.searchButtonDiv{
+    padding-left:1rem;
+}
+input,
+.options,
+.searchButtonDiv{
+    align-self: center;
+}
+.searchTerms{
+    padding: 0 1.5rem;
+    display:flex;
+    align-content: center;
+    justify-content: space-between;
+}
+/**********************/
+/* ---ATTRIBUTION --- */
+/**********************/
+.atr img{ 
+    display:block;
+    margin:auto;
+    width: 35vw;
+    max-width:200px;
+}
+
+/*************************************/
+/* --- TEMP - MOVIE CARD STLYING --- */
+/*************************************/
+.card{
+    border: 1px solid black;
+}
+.movieTitle{
+    font-size:2rem;
+    background-color: antiquewhite;
+    color: #081c24;
+}
+.description{
+    font-size:1rem;
+    background-color: lightgray;
+    color: #081c24
+}
+/************************/
+/* --- MODAL WINDOW --- */
+/************************/
+.overlay{
+    opacity:0.8;
+    background-color:black;
+}
+.modalWindow{
+    border:10px solid burlywood;
+    background-color: bisque;
+    color:darkslategrey;
+}
+/* --- */
