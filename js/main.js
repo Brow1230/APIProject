@@ -107,7 +107,7 @@ fetch(url)
 function showResponseData(jsonData){
     let searchResults = document.querySelector(".search-results>.content");
     let cards = []
-    jsonData.forEach(cardBuilder(item);
+    jsonData.forEach(cardBuilder(item));
         //FU. you get the best of me tonght
         //till tomorrow API.
         
@@ -144,6 +144,4 @@ function cardBuilder(){
     df.appendChild(movieCard);
 
     console.log(df)
-    return df;
-
 }

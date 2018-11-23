@@ -40,6 +40,7 @@
 }
 /* --- Deafults Mobile First --- */
 html{
+    margin: 0 auto;
     max-width: 500px;
     font-size: 16px;
     line-height: 1.5;
