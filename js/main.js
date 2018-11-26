@@ -179,6 +179,11 @@ function videoCards(results){
     })
     return df;
 }
+
+////////////////////////////////////////////////////////////////////////
+//////////// GET RECOMANDATIONS // DISPLAY RECOMMENDATIONS /////////////
+/////////////////// BUILDING RECOMMENDATIONS PAGE //////////////////////
+////////////////////////////////////////////////////////////////////////
 //get recommendations
 function getRec(){
     console.log(this);
@@ -192,26 +197,41 @@ function getRec(){
     .then ((data) => {
         //log data
         console.log(data);
+        //calling newRecPage
+        newRecPage(data);
     })
     .catch((error) => console.log(error));
     
 }
+function newRecPage(data){
+    let content = document.querySelector("#recommend-results>.content");
+    let title = document.querySelector("#recommend-results>.title");
+    content.innerHTML = " ";
+    title.innerHTML = " ";
+    let message = document.createElement("h2");
+    message.innerHTML = " ";
 
-// function (movieID){
-//     let url = `${movieDataBaseURL}/movie/${movieID}/recommendations?api_key=${apikey}`
-//         fetch(url)
-//         .then(function(response){
-//             //log response
-//             console.log(response);
-//             //make response into data
-//             return response.json();
-//         })
-//         .then (function(data){
-//             //log data
-//             console.log(data);
-//             //make the new page
-//         })
-//         .catch(function (error){
-//             console.log("error " + error.message);
-//             return;
-//         }
+    //lists number of total results
+    if (data.total_results == 0){
+        message.innnerHTML = `No results found for movie related to${searchString}`;
+        return;    
+    }else{
+        message.innerHTML = `${data.total_results}`;
+    }
+    //shows number to user
+    title.appendChild(message);
+    
+    // //create docFrag to fill the page with
+    let df = new DocumentFragment();
+
+    // //calling func to make cards w/ data.results
+    df.appendChild(videoCards(data.results));
+    content.appendChild(df);
+    // collecting array of cards to click
+    let cardList = document.querySelectorAll(".content>div");
+    cardList.forEach(function(item){
+        item.addEventListener("click",getRec);
+    })
+    console.log(df);
+    console.log(content);
+}
