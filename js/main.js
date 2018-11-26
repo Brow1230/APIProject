@@ -11,12 +11,6 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     config();
     addEventListener();
-
-    let cardList = document.querySelectorAll(".content>div");
-
-    cardList.forEach(function(item){
-        item.addEventListener("click",getRec());
-    })
 }
 
 function addEventListener() {
@@ -35,19 +29,6 @@ function addEventListener() {
     //enter to submit?
     //NOPE.
 }
-// function config(){
-//     let url = `${movieDataBaseURL}configuration?api_key=${apikey}
-//     `;
-
-//     fetch(url)
-//     .then(function(response){
-//         return response.json();
-//     })
-//     .then(function(data){
-//         console.log(data);
-//         imageURL = data.secure_base_url;
-//     })
-// }
 function getLocalStorageData(){
     //load image sizes and base url from local storage
     
@@ -146,12 +127,13 @@ function newPage(data){
 
     //calling func to make cards w/ data.results
     df.appendChild(videoCards(data.results));
-    
     content.appendChild(df);
-    console.log(df)
-    //logs to be removed
-    console.log(content);
-    console.log(title);
+    //collecting array of cards to click
+    let cardList = document.querySelectorAll(".content>div");
+    cardList.forEach(function(item){
+        item.addEventListener("click",getRec);
+    })
+    // console.log(df)
 }
 //results page content
 function videoCards(results){
@@ -196,13 +178,10 @@ function videoCards(results){
     df.appendChild(movCard);
     })
     return df;
-
-
-
 }
 //get recommendations
 function getRec(e){
-    console.log(e);
+    console.log(this);
     console.log(e.target);
     let movieTitle = this.getAttribute("data-title");
     console.log("clicked" + movieTitle);
