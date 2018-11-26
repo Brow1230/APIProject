@@ -160,7 +160,7 @@ function videoCards(results){
     image.src = `${imageURL}${imageSizes[2]}${item.poster_path}`;
     //movie data atributes
     movCard.setAttribute("data-title", item.title);
-    movCard.setAttribute("data-title", item.id);
+    movCard.setAttribute("data-id", item.id);
     //Woah there, you still append the sh!t 
     vidTitl.textContent = item.title;
     vidDate.textContent = "Released on: " + item.release_date;
@@ -180,9 +180,38 @@ function videoCards(results){
     return df;
 }
 //get recommendations
-function getRec(e){
+function getRec(){
     console.log(this);
-    console.log(e.target);
     let movieTitle = this.getAttribute("data-title");
-    console.log("clicked" + movieTitle);
+    let movieID = this.getAttribute("data-id");
+    console.log("clicked" + movieID + movieTitle);
+    //starting rec request
+    let url = `${movieDataBaseURL}movie/${movieID}/recommendations?api_key=${apikey}`;
+    fetch(url)
+    .then(response => response.json())
+    .then ((data) => {
+        //log data
+        console.log(data);
+    })
+    .catch((error) => console.log(error));
+    
 }
+
+// function (movieID){
+//     let url = `${movieDataBaseURL}/movie/${movieID}/recommendations?api_key=${apikey}`
+//         fetch(url)
+//         .then(function(response){
+//             //log response
+//             console.log(response);
+//             //make response into data
+//             return response.json();
+//         })
+//         .then (function(data){
+//             //log data
+//             console.log(data);
+//             //make the new page
+//         })
+//         .catch(function (error){
+//             console.log("error " + error.message);
+//             return;
+//         }
