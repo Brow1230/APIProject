@@ -2,14 +2,15 @@
 const movieDataBaseURL = "https://api.themoviedb.org/3/";
 let imageURL = null;
 let imageSizes = [];
-
 let searchString ="";
 let pages = [];
 //
 document.addEventListener("DOMContentLoaded", init);
-//
+/**************/ 
+/* INITIALIZE */ 
+/**************/ 
 function init() {
-    config();
+    getLocalStorageData();
     addEventListener();
 }
 
@@ -24,25 +25,50 @@ function addEventListener() {
     let backButton = document.querySelector(".backButtonDiv");
     backButton.addEventListener("click", back);
     //PAGES
-    pages = document.querySelectorAll(".page");
-    console.log(pages,optionsButton,searchButton);
+    
     //enter to submit?
     //NOPE.
 }
+/***************************/
+/* LOCAL STORAGE FUNCTIONS */
+/***************************/
 function getLocalStorageData(){
-    //load image sizes and base url from local storage
-    
-    //doesn't exist
-    // the data is there but stale (over an hour old)
-    
-    //else it does exist and is less than 1 hour old 
-    // load from local storage
-    
+    //find the time
+     if(localStorage.getItem("dateStored")) {
+    //let the limit it's good for 
+        let staleLimit = 3000;
+        // localStorage.clear();
+        let saveDate = localStorage.getItem("dateStored");
+        console.log(saveDate);
+    //calc the time inbetween
+        let timeSaved = calcTimeStored(saveDate);
+    //if its more than that ^ you refresh
+        if(timeSaved > staleLimit){
+            config();
+        }
+    //else use it
+        else{
+            imageURL = JSON.parse(localStorage.getItem('secure_base_url'));
+            imageSizes = JSON.parse(localStorage.getItem('poster_sizes')); 
+        }
+     }
 }
-
+function saveLocalStorageData(){
+    let saveDate = new Date;
+        saveDate = saveDate.getTime();
+    localStorage.setItem("dateStored", saveDate);
+    localStorage.setItem("url",JSON.stringify(imageURL));
+    localStorage.setItem("sizes",JSON.stringify(imageSizes));
+}
+function calcTimeStored(saveDate){
+    let now = new Date;
+    console.log(now.getTime());
+    let eTime = (now - saveDate);
+    return eTime;
+    //this was the hardest part ^ 
+}
 function config(){
     let url = `${movieDataBaseURL}configuration?api_key=${apikey}`;
-    
     fetch(url)
     .then(function(response){
         return response.json();    
@@ -51,23 +77,31 @@ function config(){
         console.log(data);
         imageURL = data.images.secure_base_url;
         imageSizes = data.images.poster_sizes;
+        saveLocalStorageData(data);
     })
     .catch(function(error){
         console.log(error);
         alert("check the console. its broken.");
     })
+    
 }
-//Button functions
-//options / settings button
+/********************/
+/* BUTTON FUNCTIONS */ 
+/********************/ 
+
 function options(){
 
 }
-//Back Button
+
 function back(){
 
 }
 //search button
 function startSearch(){
+    pages = document.querySelectorAll(".page");
+    console.log(pages);
+    pageToggle();
+    //
     searchString = document.getElementById("search-input").value;
     if (!searchString){
         alert("please enter search data");
@@ -78,7 +112,9 @@ function startSearch(){
     getSearchResults ();
 
 }
-//response
+/****************/ 
+/* START SEARCH */
+/****************/ 
 function getSearchResults(){
 let url = `${movieDataBaseURL}search/movie?api_key=${apikey}&query=${searchString}`;
 fetch(url)
@@ -101,7 +137,9 @@ fetch(url)
         return;
     })
 }
-//build results page
+/**********************/ 
+/* BUILD RESULTS PAGE */ 
+/**********************/ 
 function newPage(data){
 
     let content = document.querySelector("#search-results>.content");
@@ -179,12 +217,9 @@ function videoCards(results){
     })
     return df;
 }
-
-////////////////////////////////////////////////////////////////////////
-//////////// GET RECOMANDATIONS // DISPLAY RECOMMENDATIONS /////////////
-/////////////////// BUILDING RECOMMENDATIONS PAGE //////////////////////
-////////////////////////////////////////////////////////////////////////
-//get recommendations
+/***********************/ 
+/* GET RECOMMENDATIONS */ 
+/***********************/
 function getRec(){
     console.log(this);
     let movieTitle = this.getAttribute("data-title");
@@ -203,6 +238,9 @@ function getRec(){
     .catch((error) => console.log(error));
     
 }
+/******************************/ 
+/* BUILD RECOMMENDATIONS PAGE */ 
+/******************************/ 
 function newRecPage(data){
     let content = document.querySelector("#recommend-results>.content");
     let title = document.querySelector("#recommend-results>.title");
@@ -234,4 +272,11 @@ function newRecPage(data){
     })
     console.log(df);
     console.log(content);
+}
+/****************/ 
+/* PAGE TOGGLES */ 
+/****************/ 
+function pageToggle(){
+        pages[0].classList.toggle("hidden");
+        pages[1].classList.toggle("hidden");
 }
