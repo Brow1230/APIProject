@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-    <main>
+    <main class="main">
         <header >
             <a href="">
                 <h1 class="siteName"> Find-a-Film </h1>
@@ -39,20 +39,22 @@
             <section class="title flex-container"></section>
             <section class="content flex-container"></section>
         </div>
-
-        <div class="modalWindow hidden" id="modalWindow">
-            <section class="title">
-                <h1>OPTIONS</h1>
-            </section>
-            <section class="content">
-                <form action="">
-                <input type="radio" value="Movies">
-                <p>Movies</p>
-                <input type="radio" value="Tv">
-                <p>Tv Shows</p>
-            </form>
+        <!-- OVERLAY -->
+        <div class="overlay hidden">&nbsp;</div>
+        <!-- MODAL WINDOW -->
+        <div class="modalWindow off" id="modalWindow">
+            <div class="mHeader">
+                <h1>Choose your search preferences!</h1>
+            </div>
+            <div class="modal-radio">
+                <input type="radio" name="preference" value="tvshows" id="movies">
+                <label for="tvshows">TvShows</label>
+                <input type="radio" name="preference" value="movies" id="movies">
+                <label for="movies">Movies</label>
+            </div>
+            <button class="cancelButton">CANCEL</button>
+            <button class="saveButton">SAVE</button>
             
-            </section>
 
         </div>
         <footer class="atr">

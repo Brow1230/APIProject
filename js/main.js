@@ -90,7 +90,7 @@ function config(){
 /********************/ 
 
 function options(){
-
+    overlay();
 }
 
 function back(){
@@ -280,3 +280,15 @@ function pageToggle(){
         pages[0].classList.toggle("hidden");
         pages[1].classList.toggle("hidden");
 }
+/****************/ 
+/* MODAL WINDOW */ 
+/****************/
+function overlay(){
+    let modalWindow = document.getElementById("modalWindow");
+        modalWindow.classList.remove("off");
+        modalWindow.classList.add("on");
+
+    let overlay = document.getElementsByClassName("overlay");
+        overlay.classList.remove("hidden");
+        overlay.classList.add("active");
+} 

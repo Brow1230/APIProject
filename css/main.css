@@ -63,6 +63,12 @@
 .hidden{
     display: none;
 }
+.off{
+    transform: translateY(-400%);
+}
+.on{
+    transform: translateY(0);
+}
 /*********************************/
 /* --- Deafults Mobile First --- */
 /*********************************/
@@ -195,7 +201,7 @@ input,
 /* --- MODAL WINDOW --- */
 /************************/
 .overlay{
-    opacity:0.8;
+    opacity:0;
     background-color:black;
 }
 .modalWindow{
@@ -203,6 +209,11 @@ input,
     background-color: bisque;
     color:darkslategrey;
 }
+
+
+
+
+
 @media all and (min-width: 501px){
     html{
         max-width:1000px;
