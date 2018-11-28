@@ -20,12 +20,16 @@ function addEventListener() {
   searchButton.addEventListener("click", startSearch);
     //OPTIONS BUTTON
     let optionsButton = document.querySelector(".options");
-    optionsButton.addEventListener("click", options);
+    optionsButton.addEventListener("click", showModal);
     //BACK BUTTON
     let backButton = document.querySelector(".backButtonDiv");
     backButton.addEventListener("click", back);
-    //PAGES
-    
+    //CANCEL BUTTON IN MODAL WINDOW
+    let cancelButton = document.querySelector(".cancelButton");
+    cancelButton.addEventListener("click",hideOverlay);
+    //SAVE BUTTON IN MODAL WINDOW
+    let saveButton = document.querySelector(".saveButton");
+    saveButton.addEventListener("click",saveOptions);
     //enter to submit?
     //NOPE.
 }
@@ -33,15 +37,18 @@ function addEventListener() {
 /* LOCAL STORAGE FUNCTIONS */
 /***************************/
 function getLocalStorageData(){
+    
     //find the time
      if(localStorage.getItem("dateStored")) {
     //let the limit it's good for 
-        let staleLimit = 3000;
+        let staleLimit = 3600000;
         // localStorage.clear();
         let saveDate = localStorage.getItem("dateStored");
         console.log(saveDate);
     //calc the time inbetween
         let timeSaved = calcTimeStored(saveDate);
+    //check if theres data in localStorage
+        
     //if its more than that ^ you refresh
         if(timeSaved > staleLimit){
             config();
@@ -50,7 +57,10 @@ function getLocalStorageData(){
         else{
             imageURL = JSON.parse(localStorage.getItem('secure_base_url'));
             imageSizes = JSON.parse(localStorage.getItem('poster_sizes')); 
+            console.log(imageURL + imageSizes);
         }
+     }else{
+         config();
      }
 }
 function saveLocalStorageData(){
@@ -85,22 +95,19 @@ function config(){
     })
     
 }
-/********************/
-/* BUTTON FUNCTIONS */ 
-/********************/ 
-
-function options(){
-    overlay();
-}
-
-function back(){
-
+/******************/
+/* MODE FUNCTINOS */ 
+/******************/ 
+function saveOptions(){
+    let perferences = document.getElementById("movies");
+    let mode = null ; 
+    
 }
 //search button
 function startSearch(){
     pages = document.querySelectorAll(".page");
     console.log(pages);
-    pageToggle();
+    goToSearchResults();
     //
     searchString = document.getElementById("search-input").value;
     if (!searchString){
@@ -273,22 +280,68 @@ function newRecPage(data){
     console.log(df);
     console.log(content);
 }
-/****************/ 
-/* PAGE TOGGLES */ 
-/****************/ 
-function pageToggle(){
-        pages[0].classList.toggle("hidden");
-        pages[1].classList.toggle("hidden");
+/********************/ 
+/* PAGE NAVIGATIONS */ 
+/********************/ 
+function goToSearchResults(){
+    pages[0].classList.remove("hidden");
+    pages[1].classList.add("hidden");
+
 }
 /****************/ 
 /* MODAL WINDOW */ 
 /****************/
-function overlay(){
-    let modalWindow = document.getElementById("modalWindow");
-        modalWindow.classList.remove("off");
-        modalWindow.classList.add("on");
+//original copy pasta
+// function showOverlay(e) {
+//     e.preventDefault();
+//     let overlay = document.querySelector(".overlay");
+//     overlay.classList.remove("hide");
+//     overlay.classList.add("show");
+//     showModal(e);
+// }
+// function showModal(e) {
+//     e.preventDefault();
+//     let modal = document.querySelector(".modal");
+//     modal.classList.remove("off");
+//     modal.classList.add("on");
+// }
+function showModal(e) {
+    e.preventDefault();
+    let overlay = document.querySelector("#overlay");
+    overlay.classList.toggle("hidden");
+    overlay.classList.toggle("active");
+    let modal = document.querySelector("#modal");
+    modal.classList.toggle("off");
+    modal.classList.toggle("on");
+}
+function hideOverlay(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    let overlay = document.querySelector(".overlay");
+    overlay.classList.remove("active");
+    overlay.classList.add("hidden");
+    hideModal(e);
+    
+}
+function hideModal(e) {
+    e.preventDefault();
+    let modal = document.querySelector(".modal");
+    modal.classList.remove("on");
+    modal.classList.add("off");
+}
 
-    let overlay = document.getElementsByClassName("overlay");
-        overlay.classList.remove("hidden");
-        overlay.classList.add("active");
-} 
+// function hideOverlay(e) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     let overlay = document.querySelector(".overlay");
+//     overlay.classList.remove("show");
+//     overlay.classList.add("hide");
+//     hideModal(e);
+// }
+
+// function hideModal(e) {
+//     e.preventDefault();
+//     let modal = document.querySelector(".modal");
+//     modal.classList.remove("on");
+//     modal.classList.add("off");
+// }

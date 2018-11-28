@@ -39,21 +39,7 @@
             <section class="title flex-container"></section>
             <section class="content flex-container"></section>
         </div>
-        <!-- OVERLAY -->
-        <div class="overlay hidden">&nbsp;</div>
-        <!-- MODAL WINDOW -->
-        <div class="modalWindow off" id="modalWindow">
-            <div class="mHeader">
-                <h1>Choose your search preferences!</h1>
-            </div>
-            <div class="modal-radio">
-                <input type="radio" name="preference" value="tvshows" id="movies">
-                <label for="tvshows">TvShows</label>
-                <input type="radio" name="preference" value="movies" id="movies">
-                <label for="movies">Movies</label>
-            </div>
-            <button class="cancelButton">CANCEL</button>
-            <button class="saveButton">SAVE</button>
+      
             
 
         </div>
@@ -62,8 +48,24 @@
                 <img src="img/408x161-powered-by-rectangle-green.png" alt="Powered By the Movie Database" />            
             </a>
         </footer>
+          <!-- OVERLAY -->
+          <div class="overlay hidden" id="overlay">&nbsp;</div>
+          <!-- MODAL WINDOW -->
+          
     </main>
-    
+    <div class="modal off" id="modal">
+        <div class="mHeader">
+            <h3>Choose your search preferences!</h3>
+        </div>
+        <div class="modal-radio">
+            <input type="radio" name="preference" value="tvshows" id="movies">
+            <label for="tvshows">TvShows</label>
+            <input type="radio" name="preference" value="movies" id="movies">
+            <label for="movies">Movies</label>
+        </div>
+        <button class="cancelButton">CANCEL</button>
+        <button class="saveButton">SAVE</button>
+    </div>
     <script src="js/iconic.min.js"></script>
     <script src="js/key.js"></script>
     <script src="js/main.js"></script>
