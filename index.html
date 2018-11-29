@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-    <main>
+    <main class="main">
         <header >
             <a href="">
                 <h1 class="siteName"> Find-a-Film </h1>
@@ -30,29 +30,17 @@
         </header>
         
         <div class="page hidden" id="search-results">
-            <section class="title"></section>
-            <section class="content"></section>
+            <section class="title flex-container"></section>
+            <section class="content flex-container"></section>
 
         </div>
         
-        <div class="page hidden" id="recommend-results">
-            <section class="title"></section>
-            <section class="content"></section>
+        <div class="page " id="recommend-results">
+            <section class="title flex-container"></section>
+            <section class="content flex-container"></section>
         </div>
-
-        <div class="modalWindow hidden" id="modalWindow">
-            <section class="title">
-                <h1>OPTIONS</h1>
-            </section>
-            <section class="content">
-                <form action="">
-                <input type="radio" value="Movies">
-                <p>Movies</p>
-                <input type="radio" value="Tv">
-                <p>Tv Shows</p>
-            </form>
+      
             
-            </section>
 
         </div>
         <footer class="atr">
@@ -60,8 +48,24 @@
                 <img src="img/408x161-powered-by-rectangle-green.png" alt="Powered By the Movie Database" />            
             </a>
         </footer>
+          <!-- OVERLAY -->
+          <div class="overlay hidden" id="overlay">&nbsp;</div>
+          <!-- MODAL WINDOW -->
+          
     </main>
-    
+    <div class="modal off" id="modal">
+        <div class="mHeader">
+            <h3>Choose your search preferences!</h3>
+        </div>
+        <div class="modal-radio">
+            <input type="radio" name="preference" value="tvshows" id="movies">
+            <label for="tvshows">TvShows</label>
+            <input type="radio" name="preference" value="movies" id="movies">
+            <label for="movies">Movies</label>
+        </div>
+        <button class="cancelButton">CANCEL</button>
+        <button class="saveButton">SAVE</button>
+    </div>
     <script src="js/iconic.min.js"></script>
     <script src="js/key.js"></script>
     <script src="js/main.js"></script>

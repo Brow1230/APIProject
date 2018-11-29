@@ -8,7 +8,24 @@
 *::before{
     box-sizing: inherit;
 }
+/* type scale
+    3.998
+    2.827
+    1.999
+    1.414
+    1
+    0.707
+    0.5
+    0.354
+*/
+/* 
+    hexcolours
+    lightblue: 75C2FF
+    pinkish: FF928F
+    another blue:4080B2
 
+
+*/
 /************************/
 /* -- Buttons Styles -- */
 /************************/
@@ -46,13 +63,19 @@
 .hidden{
     display: none;
 }
+.off{
+    transform: translateY(-4000%);
+}
+.on{
+    transform: translateY(0);
+}
 /*********************************/
 /* --- Deafults Mobile First --- */
 /*********************************/
 
 html{    
     margin:auto;
-    width:500px;
+    max-width:500px;
     font-size: 16px;
     line-height: 1.5;
 }
@@ -66,7 +89,7 @@ header{
     text-shadow: black;
 }
 body{
-    background-color: #081c24;
+    background-color: #4080B2;
     font-family: 'Noto Sans TC', Arial, Helvetica, sans-serif;
 }
 main{
@@ -124,29 +147,89 @@ input,
 /*************************************/
 /* --- TEMP - MOVIE CARD STLYING --- */
 /*************************************/
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 .card{
-    border: 1px solid black;
+    /* flex-direction: row; */
+    width: 75% ;
+    border: 1px solid rgb(80, 68, 68);
+    border-radius: 15px;
+    margin: 1rem auto;
+    background-color: #75C2FF;
+    color: white;
+    overflow: hidden;
+    transition: transform 0.7s ease , box-shadow 0.5s ease;
+}
+.card:hover{
+    transform: scale(1.07);
+    box-shadow: #FF928F 0px 0px 80px;
 }
 .movieTitle{
-    font-size:2rem;
+    /* flex-direction: row; */
+    font-size:2.827rem;
     background-color: antiquewhite;
     color: #081c24;
+    text-align: center;
 }
 .description{
+    padding:0.5rem 0.6rem;
     font-size:1rem;
-    background-color: lightgray;
-    color: #081c24
+}
+.dateOfRel{
+    padding:0.25rem 0.5rem;
+    font-size:0.707rem;
+    color:black;
+    border-radius:15px;
+    text-align: end;
+}
+.imgSection {
+    /* width: 12rem; */
+    height: 17rem;
+    margin-right: 1rem;
+    overflow: hidden;
+
+}
+/*select only the images that are direct descendants of .imageSection*/
+.imgSection > img {
+   /* height: 17rem; */
+    margin-right: 1rem;
 }
 /************************/
 /* --- MODAL WINDOW --- */
 /************************/
 .overlay{
-    opacity:0.8;
-    background-color:black;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(58, 51, 51, 0.7);
 }
-.modalWindow{
+#modal{
+    position: fixed;
+    width:500px;
+    height: 200px;
+    z-index:200;
+    top: calc((100% - 280px)/2);
+    left: calc((100% - 500px)/2);
+    font-size: 16px;
+    line-height: 1.5;
     border:10px solid burlywood;
     background-color: bisque;
     color:darkslategrey;
+    
 }
-/* --- */
+.modal h3{
+    text-align: center;
+    line-height: 2rem;
+}
+
+@media all and (min-width: 501px){
+    html{
+        max-width:1000px;
+    }
+}
