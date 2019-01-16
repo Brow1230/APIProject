@@ -12,22 +12,23 @@
             <a href="">
                 <h1 class="siteName"> Find-a-Film </h1>
             </a>
-            <div class="backButtonDiv hidden">
-                <img id="back-button" alt="Back Button" title="Back" data-src="img/carriage-return.svg" class="iconic">
-            </div>
-            <section class="searchTerms">
+        </header>
+        <section class="searchTerms">
+                <div class="backButtonDiv">
+                    <img id="back-button" alt="Back Button" title="Back" data-src="img/carriage-return.svg" class="iconic">
+                </div>
+
                 <div class="searchButtonDiv">
                     <img id="search-button" alt="Search" title="Search" data-src="img/magnifying-glass.svg" class="iconic iconic-md"/>
                 </div>
-                <input type="text" id="search-input" placeholder="Type your search..." />
-                <div class="options">
-                        <img id="settings" alt="Search Options" title="Options" src="img/settings-md.svg" class ="" >
+                <div class="searchInput">
+                    <input type="text" id="search-input" placeholder="Type your search..." />
                 </div>
-            </section>
-            <!-- <div class="options">
-                <img id="settings" alt="Search Options" title="Options" src="img/settings-md.svg" class ="" >
-            </div> -->
-        </header>
+                
+                <div class="options">
+                    <img id="settings" alt="Search Options" title="Options" src="img/settings-md.svg" class ="" >
+                </div>
+        </section>
         
         <div class="page hidden" id="search-results">
             <section class="title flex-container"></section>
@@ -35,7 +36,7 @@
 
         </div>
         
-        <div class="page " id="recommend-results">
+        <div class="page" id="recommend-results">
             <section class="title flex-container"></section>
             <section class="content flex-container"></section>
         </div>
@@ -58,10 +59,10 @@
             <h3>Choose your search preferences!</h3>
         </div>
         <div class="modal-radio">
-            <input type="radio" name="preference" value="tvshows" id="movies">
-            <label for="tvshows">TvShows</label>
+            <input type="radio" name="preference" value="tvshows" id="tvshows">
+            <label for="tvshows" target="tvshows">TvShows</label>
             <input type="radio" name="preference" value="movies" id="movies">
-            <label for="movies">Movies</label>
+            <label for="movies" target="movies">Movies</label>
         </div>
         <button class="cancelButton">CANCEL</button>
         <button class="saveButton">SAVE</button>
